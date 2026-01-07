@@ -1,74 +1,132 @@
-# Getting Started with Create React App
+# 🎬 Movie Discovery App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive React application that allows users to browse a paginated list of movies, search by title or cast members, and view movie details. This project demonstrates robust state management with **Redux Toolkit**, API handling with **Axios** (featuring automatic fallback data), and a clean UI built with **Material UI (MUI)**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+* **Paginated Movie Feed:** Seamlessly fetches movies page-by-page from an external API.
+* **"Load More" Functionality:** Appends new movies to the existing list allowing for infinite-scroll style navigation without losing previous data.
+* **Smart Client-Side Search:** Real-time filtering that checks both **Movie Titles** and **Cast Members**.
+    * *Example:* Searching for "Robert Downey Jr." will instantly find *Avengers: Endgame*.
+* **Resilient Data Handling (Fallback Mode):** If the external API fails or goes down, the app automatically switches to a built-in "Backup Data" set so the user interface never breaks.
+* **Responsive Design:** Optimized for Desktops, Tablets, and Mobile devices using the Material UI Grid system.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+* **Frontend Library:** [React.js (v18)](https://reactjs.org/)
+* **State Management:** [Redux Toolkit](https://redux-toolkit.js.org/)
+* **Routing:** [React Router DOM](https://reactrouter.com/)
+* **UI Components:** [Material UI (MUI)](https://mui.com/)
+* **HTTP Client:** [Axios](https://axios-http.com/)
+* **Icons:** [Material Icons](https://mui.com/material-ui/material-icons/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📂 Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+src/
+├── api/
+│   └── movies.js          # API logic: Handles fetching from server & Backup data fallback
+├── components/
+│   ├── MovieCard/         # Reusable component to display individual movie poster & info
+│   ├── Navbar/            # Application header and navigation
+│   └── SelectorComponent/ # Reusable dropdown component
+├── pages/
+│   └── Home/              # Main Dashboard: Handles pagination state & rendering logic
+├── slice/
+│   └── movieSlice.js      # Redux Slice: Manages global movie list & search state
+├── utils/
+│   └── getMoviesBySearch.js # Utility: Logic for filtering movies by Title OR Cast
+├── store/
+│   └── index.js           # Redux Store configuration
+├── App.js                 # Main Application Layout & Routing
+└── index.js               # Application Entry Point
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+---
 
-### `npm run eject`
+## ⚡ Getting Started
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Follow these instructions to get a copy of the project running on your local machine.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
+* **Node.js** (v14.0.0 or higher)
+* **npm** (usually comes with Node.js) or **yarn**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/RahulV17/Mobile_App.git](https://github.com/RahulV17/Mobile_App.git)
+    cd Mobile_App
+    ```
 
-## Learn More
+2.  **Install dependencies**
+    ```bash
+    npm install
+    # OR
+    yarn install
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3.  **Start the development server**
+    ```bash
+    npm start
+    # OR
+    yarn start
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4.  **Open in Browser**
+    The app should automatically open. If not, visit:
+    `http://localhost:3000`
 
-### Code Splitting
+    ---
+###  State Management (Redux)
+* **`setMovies`**: Used on the initial load (Page 1) to refresh the list.
+* **`addMovies`**: Used when "Load More" is clicked to append new data to the existing array.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🔮 Future Improvements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* **Server-Side Search:** Move search logic to the backend to query the entire database instead of just loaded movies.
+* **Movie Details Page:** Add a dynamic route (`/movie/:id`) to view full plot summaries and extended cast lists.
+* **Filter by Genre:** Add a dropdown to filter movies by Action, Drama, Comedy, etc.
+* **Unit Tests:** Add Jest/React Testing Library tests for the `movieSlice` and `getMoviesBySearch` utility.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🤝 Contributing
 
-### Advanced Configuration
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1.  **Fork the Project**
+2.  **Create your Feature Branch**
+    ```bash
+    git checkout -b feature/AmazingFeature
+    ```
+3.  **Commit your Changes**
+    ```bash
+    git commit -m 'Add some AmazingFeature'
+    ```
+4.  **Push to the Branch**
+    ```bash
+    git push origin feature/AmazingFeature
+    ```
+5.  **Open a Pull Request**
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📝 License
 
-### `npm run build` fails to minify
+Distributed under the MIT License. See `LICENSE` for more information.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# Mobile_App
-A fast, scalable mobile app built with React, featuring smooth navigation, reusable components, and a responsive UI for a seamless user experience.
+---
+
+**Developed with ❤️ using React & Redux**
 
